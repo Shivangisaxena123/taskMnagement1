@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 400px;
+            height: 600px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #fafafa;
+        }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .message.bot {
+            text-align: left;
+        }
+
+        .message.user {
+            text-align: right;
+        }
+
+        .message .text {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 15px;
+            max-width: 70%;
+        }
+
+        .message.bot .text {
+            background-color: #e4e6eb;
+        }
+
+        .message.user .text {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .chat-footer {
+            padding: 15px;
+            background-color: #f4f4f9;
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .send-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .send-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            Live Chatbot
+        </div>
+
+        <div class="chat-body" id="chat-body">
+            <div class="message bot">
+                <div class="text">Hello! How can I help you today?</div>
+            </div>
+        </div>
+
+        <div class="chat-footer">
+            <input type="text" class="chat-input" id="chat-input" placeholder="Type your message..." autocomplete="off">
+            <button class="send-btn" id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatBody = document.getElementById('chat-body');
+        const chatInput = document.getElementById('chat-input');
+        const sendButton = document.getElementById('send-btn');
+
+        // Simulate bot responses
+        const botResponses = [
+            "I'm sorry, I don't understand.",
+            "Can you please elaborate?",
+            "That's interesting!",
+            "How can I assist you further?",
+            "Goodbye! Have a great day!"
+        ];
+
+        // Handle sending a message
+        function sendMessage() {
+            const userInput = chatInput.value.trim();
+
+            if (userInput === '') return;
+
+            // Add user message to chat
+            addMessage('user', userInput);
+
+            // Clear the input field
+            chatInput.value = '';
+
+            // Simulate bot response after a short delay
+            setTimeout(() => {
+                const botMessage = botResponses[Math.floor(Math.random() * botResponses.length)];
+                addMessage('bot', botMessage);
+            }, 1000);
+        }
+
+        // Function to add a message to the chat body
+        function addMessage(sender, message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+
+            const messageText = document.createElement('div');
+            messageText.classList.add('text');
+            messageText.textContent = message;
+
+            messageDiv.appendChild(messageText);
+            chatBody.appendChild(messageDiv);
+
+            // Scroll to the bottom of the chat
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Event listener for the send button
+        sendButton.addEventListener('click', sendMessage);
+
+        // Send message on Enter key press
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+
+</body>
+</html>

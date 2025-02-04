@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script>
+        // Display cart items
+        function displayCart() {
+            const cartList = document.getElementById('cart-items');
+            const cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - $${item.price}`;
+                cartList.appendChild(listItem);
+            });
+        }
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;" onload="displayCart()">
+
+    <!-- Header -->
+    <header style="background-color: #333; color: white; padding: 15px; text-align: center;">
+        <h1>User Profile</h1>
+        <nav>
+            <a href="index.html" style="color: white; text-decoration: none; margin: 0 10px;">Home</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding: 20px;">
+        <h2 style="text-align: center; color: #800000;">Your Profile</h2>
+        <p style="text-align: center;">Name: John Doe</p>
+        <p style="text-align: center;">Email: johndoe@example.com</p>
+        <h3 style="color: #800000;">Cart Items</h3>
+        <ul id="cart-items" style="list-style-type: none; padding: 0;">
+            <!-- Cart items will be populated here -->
+        </ul>
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; background-color: #333; color: white; padding: 10px; margin-top: 20px;">
+        <p>&copy; 2024 My Commercial Website</p>
+    </footer>
+
+</body>
+</html>

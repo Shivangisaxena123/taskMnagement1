@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Website</title>
+    <script>
+        // JavaScript for adding items to cart
+        const cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            cart.push({ name: itemName, price: itemPrice });
+            alert(`${itemName} has been added to the cart.`);
+            sessionStorage.setItem('cart', JSON.stringify(cart)); // Save cart to session storage
+        }
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0;">
+
+    <!-- Header -->
+    <header style="background-color: #333; color: white; padding: 15px; text-align: center;">
+        <h1>My Commercial Website</h1>
+        <nav>
+            <a href="profile.html" style="color: white; text-decoration: none; margin: 0 10px;">Profile</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding: 20px;">
+        <section id="products">
+            <h2 style="text-align: center; color: #000d80;">Available Products</h2>
+            <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+                <!-- Product 1 -->
+                <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; text-align: center; max-width: 200px;">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.-T-OmVvXNyvlNRnbtTKWKQHaHa&pid=Api&P=0&h=180" alt="Product 1" style="max-width: 100%; height: auto;">
+                    <h3>Product 1</h3>
+                    <p>10000 Rupees</p>
+                    <button onclick="addToCart('Product 1', 10)" style="background-color: #090080; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>
+                </div>
+                <!-- Product 2 -->
+                <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; text-align: center; max-width: 200px;">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.4P6VNYIb1sLmeJHRZnodPAHaFv&pid=Api&P=0&h=180" alt="Product 2" style="max-width: 100%; height: auto;">
+                    <h3>Product 2</h3>
+                    <p>2000 Rupees</p>
+                    <button onclick="addToCart('Product 2', 20)" style="background-color: #2b0080; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>
+                </div>
+                <!-- Product 3 -->
+                <div style="border: 1px solid #ccc; padding: 10px; margin: 10px; text-align: center; max-width: 200px;">
+                    <img src="https://i.pinimg.com/originals/5b/3d/0e/5b3d0e1dbdc1c447db041c1a4609ff50.jpg" alt="Product 3" style="max-width: 100%; height: auto;">
+                    <h3>Product 3</h3>
+                    <p>30000 Rupees</p>
+                    <button onclick="addToCart('Product 3', 30)" style="background-color: #1c0080; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="text-align: center; background-color: #333; color: white; padding: 10px; margin-top: 20px;">
+        <p>&copy; 2024 My Commercial Website</p>
+    </footer>
+
+</body>
+</html>
